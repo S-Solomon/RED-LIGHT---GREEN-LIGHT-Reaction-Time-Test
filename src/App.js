@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+// import React, { useContext } from "react";
+import AppContextProvider, { UseReactionTimerContext } from "./AppContext";
+import Block from "./Block";
+import ButtonStart from "./ButtonStart";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
 
-export default App;
+const App = () => {
+    const { isPlaying } = UseReactionTimerContext() || {};
+
+    return (
+        <AppContextProvider>
+            <div className="flex flex-col justify-center items-center">
+                <h1 className="text-center font-bold text-xl">
+                    Reaction Time Tracker
+                </h1>
+                <ButtonStart />
+                <Block />
+                {/* { isPlaying && <Block />} */}
+            </div>
+        </AppContextProvider>
+    );
+};
+
+export default App
+ 
